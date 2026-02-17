@@ -9,5 +9,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+        keymap {
+                compatible = "zmk,keymap";
 
+        };
 };
