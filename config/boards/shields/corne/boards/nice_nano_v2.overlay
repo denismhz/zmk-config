@@ -59,9 +59,23 @@
     };
 };
 
+&spi1 {
+    status = "okay";
+
+    oled_display: ssd1306@0 {
+        compatible = "solomon,ssd1306";
+        reg = <0>;  // SPI device instance, typically "0"
+        spi-max-frequency = <1000000>;  // SPI clock speed
+        width = <128>;
+        height = <64>;
+        dc-gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;   // DC pin (data/command)
+        reset-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>; // Reset pin
+    };
+};
+
 / {
     chosen {
         zmk,underglow = &led_strip;
-        zephyr,display = &oled;
+        zephyr,display = &oled_display;
     };
 };
