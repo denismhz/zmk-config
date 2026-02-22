@@ -47,6 +47,7 @@
         };
     };
 };
+
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -106,3 +107,6 @@
         };
 };
 
+&led_strip {
+    chain-length = <26>;
+};
