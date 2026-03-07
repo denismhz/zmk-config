@@ -6,6 +6,12 @@
 
 #include "enki42.dtsi"
 
+/ {
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+};
+
 &kscan0 {
 	col-gpios
 		= <&pro_micro 21 GPIO_ACTIVE_HIGH>
