@@ -16,24 +16,24 @@
 };
 
 // replace the following lines for the 128x64 screen by default
-/*&pro_micro_i2c {
+&pro_micro_i2c {
     status = "okay";
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
-        height = <32>;
+        height = <64>;
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
         multiplex-ratio = <63>;
         segment-remap;
         com-invdir;
-        inversion-on;
+        //inversion-on;
         prechargep = <0x22>;
     };
-};*/
+};
 
 &spi3 {
     compatible = "nordic,nrf-spim";
@@ -62,6 +62,6 @@
 / {
     chosen {
         zmk,underglow = &led_strip;
-        //zephyr,display = &oled;
+        zephyr,display = &oled;
     };
 };
