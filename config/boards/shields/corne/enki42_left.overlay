@@ -5,7 +5,7 @@
  */
 
 #include "enki42.dtsi"
-#include <zmk/wpm.h>
+#include <zmk/events/wpm_state_changed.h>
 
 / {
     chosen {
