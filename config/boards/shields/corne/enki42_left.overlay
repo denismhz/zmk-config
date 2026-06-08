@@ -5,6 +5,8 @@
  */
 
 #include "enki42.dtsi"
+#include <zmk/wpm.h>
+
 
 / {
     chosen {
