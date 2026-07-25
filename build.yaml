@@ -21,12 +21,12 @@
 include:
   - board: nice_nano_v2
     shield: enki42_left nice_oled
-    snippet: zmk-usb-loggin
+    snippet: zmk-usb-logging
   - board: nice_nano_v2
     shield: enki42_right nice_oled
     snippet: zmk-usb-loggin
   - board: nice_nano_v2
     shield: enki42_dongle
-    snippet: zmk-usb-loggin
+    snippet: zmk-usb-logging
   - board: nice_nano_v2
     shield: settings_reset
