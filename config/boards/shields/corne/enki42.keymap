@@ -20,10 +20,6 @@
 &lt { quick_tap_ms = <220>; };
 &mt { quick_tap_ms = <220>; };
 
-&led_strip {
-    chain-length = <27>;
-};
-
 / {
     macros {
         numdot: numdot {
