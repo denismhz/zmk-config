@@ -86,7 +86,7 @@
 //| LALT |  MUTE  |  PGDN  |  ___ | END  | ___  |            | ___  | END  | ___ | PGDN | MUTE | RALT |
 //                          | ___ | ___  | ADJ  |            | ADJ  | ___  | ___ |
                         bindings = <
-&kp LWIN &kp C_VOL_UP &kp PG_UP &kp C_PP &kp HOME &none      &kp N0 &kp HOME &kp C_PP &kp PG_UP &kp C_VOL_UP &kp RWIN
+&kp LWIN &kp C_VOL_UP &kp PG_UP &kp C_PP &kp HOME &rgb_ug RGB_TOG      &kp N0 &kp HOME &kp C_PP &kp PG_UP &kp C_VOL_UP &kp RWIN
 &kp LCTRL  &kp C_VOL_DN   &kp LEFT   &kp UP         &kp DOWN &kp RIGHT                                   &kp LEFT  &kp DOWN  &kp UP      &kp RIGHT  &kp C_VOL_DN  &kp RALT 
 &kp LALT   &kp C_MUTE     &kp PG_DN  &kp LG(LS(S))  &kp END  &kp C_PLAY                                  &kp N0    &kp END   &grtsgn      &kp PG_DN  &kp C_MUTE    &kp RALT
                                                     &trans   &trans       &lt ADJ RET        &lt ADJ ESC &trans &trans
