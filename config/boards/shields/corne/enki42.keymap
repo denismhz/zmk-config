@@ -90,9 +90,9 @@
 //                             | RSE | SPC | LWR |   | LWR | BKSP | RSE |
                         bindings = <
   &mt LGUI RBKT   &kp Q &kp W &kp E &kp R &kp T               &kp Y  &kp U  &kp I     &kp O   &kp P    &mt RGUI LBKT 
-  &mt GRAVE &hml LGUI A &hml LALT S &hml LCTRL D &hml LSHFT F &kp G  &kp H &hmr RSHFT J  &hmr RCTRL K &hmr RALT L &hmr RGUI SEMI &mt SQT
-  &mt BSLH  &kp Z &kp X &kp C &kp V &kp B               &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &mt MINUS
-        &lt RSE TAB &mt SPACE &lt LWR RET              &lt LWR ESC &mt BSPC &lt RSE DEL
+  &kp GRAVE &hml LGUI A &hml LALT S &hml LCTRL D &hml LSHFT F &kp G  &kp H &hmr RSHFT J  &hmr RCTRL K &hmr RALT L &hmr RGUI SEMI &kp SQT
+  &kp BSLH  &kp Z &kp X &kp C &kp V &kp B               &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp MINUS
+        &lt RSE TAB &kp SPACE &lt LWR RET              &lt LWR ESC &kp BSPC &lt RSE DEL
                         >;
                 };
                 lower_layer {
