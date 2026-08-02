@@ -21,7 +21,7 @@
 
 	chosen {
 		zmk,kscan = &kscan0;
-		zmk,matrix_transform = &default_transform;
+		zmk,matrix_transform = &foostan_corne_6col_layout;
 	};
 
 	default_transform: keymap_transform_0 {
