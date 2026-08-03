@@ -76,6 +76,13 @@
 			hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
 		};
 	};
+
+};
+        &uc {
+  default-mode = <UC_MODE_LINUX>;  // Default to Linux input system
+  minimum-length = <0>;            // Set to desired minimum input length
+  linux-key = <LC(LS(U))>;         // Overwrite Linux compose key
+  win-compose-key = <RALT>;        // Overwrite WinCompose compose key
 };
 
 / {
