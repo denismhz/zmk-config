@@ -4,12 +4,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
     - name: mctechnology17
       url-base: https://github.com/mctechnology17
     - name: urob
       url-base: https://github.com/urob
+    - name: carrefinho
+      url-base: https://github.com/carrefinho
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -20,6 +20,9 @@ manifest:
       revision: main
     - name: zmk-unicode
       remote: urob
-      revision: v0.3 # Should match ZMK release.
+      revision: v0.3
+    - name: prospector-zmk-module
+      remote: carrefinho
+      revision: main
   self:
     path: config
