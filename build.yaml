@@ -24,8 +24,12 @@ include:
   - board: nice_nano_v2
     shield: enki42_right nice_oled
   - board: nice_nano_v2
-    shield: enki42_dongle nice_oled prospector_adapter
+    shield: enki42_dongle nice_oled
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: nice_nano_v2
     shield: settings_reset
+  - board: seeeduino_xiao_ble
+    shield: enki42_dongle prospector_adapter
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
