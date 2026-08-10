@@ -34,4 +34,3 @@ include:
     snippet: studio-rpc-usb-uart
     cmake-args: >-
       -DCONFIG_ZMK_STUDIO=y
-      -DEXTRA_CFLAGS="-DZMK_SPLIT_BLE_PERIPHERAL_COUNT=CONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS"
