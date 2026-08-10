@@ -24,33 +24,6 @@
 &mt { quick_tap_ms = <220>; };
 
 / {
-    macros {
-        numdot: numdot {
-            label = "ZM_numdot";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms = <40>;
-            bindings
-                = <&macro_press   &kp LALT>    
-                , <&macro_tap     &kp KP_N4 &kp KP_N6>    
-                , <&macro_release &kp LALT>
-                ;
-        };
-        grtsgn: grtsgn {
-            label = "ZM_grtsgn";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms = <40>;
-            bindings
-                = <&macro_press   &kp LALT>    
-                , <&macro_tap     &kp KP_N6 &kp KP_N2>    
-                , <&macro_release &kp LALT>
-                ;
-        };
-    };
-
     behaviors {
 		hml: homerow_mods_left {
 			compatible = "zmk,behavior-hold-tap";
@@ -78,7 +51,8 @@
 	};
 
 };
-        &uc {
+
+&uc {
   default-mode = <UC_MODE_LINUX>;  // Default to Linux input system
   minimum-length = <0>;            // Set to desired minimum input length
   linux-key = <LC(LS(U))>;         // Overwrite Linux compose key
@@ -102,6 +76,7 @@
         &lt RSE TAB &kp SPACE &lt LWR RET              &lt LWR ESC &kp BSPC &lt RSE DEL
                         >;
                 };
+
                 lower_layer {
 // -----------------------------------------------------------------------------------------
 //|LGUI/CAPS |  *  |  7 |  8  |  9  |  +  |    |  !  |  @  |  #  |  $  |  %  | RGUI/F1 |
@@ -111,33 +86,42 @@
                         bindings = <
  &mt LGUI CAPS   &kp KP_MULTIPLY  &kp N7 &kp N8   &kp N9      &kp PLUS                    &kp EXCL      &kp AT    &kp HASH   &kp DLLR  &kp PRCNT &mt RGUI F1  
  &mt LCTRL K_APP &kp KP_SLASH     &kp N4 &kp N5   &kp N6      &kp MINUS                   &kp CARET     &kp AMPS  &kp STAR   &kp LPAR  &kp RPAR  &mt RCTRL F2
- &mt LALT EQUAL  &kp N0           &kp N1 &kp N2   &kp N3      &numdot                     &kp LG(SPACE) &kp F4    &kp F5     &kp F6    &kp F7    &mt RALT F3
+ &mt LALT EQUAL  &kp N0           &kp N1 &kp N2   &kp N3      &kp DOT                     &kp LG(SPACE) &kp F4    &kp F5     &kp F6    &kp F7    &mt RALT F3
                                                   &lt ADJ TAB &trans &trans        &trans &trans        &lt ADJ DEL
                         >;
                 };
+
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 //| LGUI |  VOLU  |  PGUP  | PLAY | HOME | ___  |            | ___  | HOME | PLAY| PGUP | VOLU | RGUI |
-//| CTRL |  VOLD  |  LEFT  |  UP  | DOWN | RGHT |            | RGHT | DOWN | UP  | LEFT | VOLD | CTRL | 
+//| CTRL |  VOLD  |  LEFT  |  UP  | DOWN | RGHT |            | LEFT | DOWN | UP  | RGHT | VOLD | CTRL | 
 //| LALT |  MUTE  |  PGDN  |  ___ | END  | ___  |            | ___  | END  | ___ | PGDN | MUTE | RALT |
 //                          | ___ | ___  | ADJ  |            | ADJ  | ___  | ___ |
                         bindings = <
-&kp LGUI &kp C_VOL_UP &kp PG_UP &kp C_PP &kp HOME &rgb_ug RGB_TOG      &kp N0 &kp HOME &kp C_PP &kp PG_UP &kp C_VOL_UP &kp RGUI
-&kp LCTRL  &kp C_VOL_DN &kp LEFT &kp UP &kp DOWN &kp RIGHT             &kp LEFT &kp DOWN &kp UP &kp RIGHT  &kp C_VOL_DN  &kp RALT 
-&kp LALT   &kp C_MUTE &kp PG_DN &kp LG(LS(S)) &kp END &kp C_PLAY       &kp N0 &kp END &grtsgn &kp PG_DN &kp C_MUTE &kp RALT
-                                &trans   &trans       &lt ADJ RET      &lt ADJ ESC &trans &trans
+&kp LGUI &kp C_VOL_UP &kp PG_UP &kp C_PP &kp HOME &none      
+&none &kp HOME &kp C_PP &kp PG_UP &kp C_VOL_UP &kp RGUI
+
+&kp LCTRL &kp C_VOL_DN &kp LEFT &kp UP &kp DOWN &kp RIGHT
+&kp LEFT &kp DOWN &kp UP &kp RIGHT  &kp C_VOL_DN  &kp RCTRL 
+
+&kp LALT &kp C_MUTE &kp PG_DN &none &kp END &none
+&none &kp END &none &kp PG_DN &kp C_MUTE &kp RALT
+
+&trans &trans &lt ADJ RET
+&lt ADJ ESC &trans &trans
                         >; 
                 };
+
                 adjust_layer {
 // -----------------------------------------------------------------------------------------
-//| BLDR |     |     |     |     |     |   |     |     |     |     |     | BLDR |
+//| BLDR | RGB | RGB | RGB | RGB | RGB |   | RGB | RGB | RGB | RGB | RGB | BLDR |
 //| BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
 //|pwrOFF|NUMLK|     |     |     |     |   |     |     |     |     |     |      |
 //                   |     |     |     |   |     |     |     |
                         bindings = <
-&bootloader &rgb_ug RGB_TOG &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_ON &rgb_ug RGB_OFF   &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF &bootloader
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0 &bt BT_CLR
-&ext_power EP_OFF &kp KP_NUM &rgb_ug RGB_SPD &rgb_ug RGB_SPI &rgb_ug RGB_COLOR_HSB(0,0,100) &none    &uc UC_DE_AE &uc UC_DE_OE &uc UC_DE_UE &none &none &ext_power EP_ON
+&bootloader &rgb_ug RGB_TOG &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_SPD &bootloader
+&none &none &none &none &none &none      &none &none &none &none &none &none
+&ext_power EP_TOG &kp KP_NUM &none &none &none &none    &uc UC_DE_AE &uc UC_DE_OE &uc UC_DE_UE &uc UC_DE_SS &none &nonw
                                                               &trans &none &trans           &trans &none &trans
                         >;
                 };
