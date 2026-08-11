@@ -21,7 +21,6 @@
       default = firmware;
 
       firmware = zmk-nix.legacyPackages.${system}.buildSplitKeyboard {
-        buildInputs = [nixpkgs.python3Packages.setuptools];
         name = "enki42";
 
         inherit src zephyrDepsHash;
