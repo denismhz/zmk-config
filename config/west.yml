@@ -8,8 +8,8 @@ manifest:
       url-base: https://github.com/mctechnology17
     - name: urob
       url-base: https://github.com/urob
-    - name: carrefinho
-      url-base: https://github.com/carrefinho
+    - name: janpfischer
+      url-base: https://github.com/janpfischer
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -21,8 +21,8 @@ manifest:
     - name: zmk-unicode
       remote: urob
       revision: v0.3
-    - name: prospector-zmk-module
-      remote: carrefinho
+    - name: zmk-dongle-screen
+      remote: janpfischer
       revision: main
   self:
     path: config
