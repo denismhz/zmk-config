@@ -50,22 +50,7 @@ disp_spi: &spi3 {
    pinctrl-0 = <&spi3_default>;
 	pinctrl-1 = <&spi3_sleep>;
 	pinctrl-names = "default", "sleep";
-   cs-gpios = <&xiao_d 9 GPIO_ACTIVE_LOW>, <&xiao_d 0 GPIO_ACTIVE_LOW>;
-
-    led_strip: ws2812@0 {
-        compatible = "worldsemi,ws2812-spi";
-
-        /* SPI */
-        reg = <1>; /* ignored, but necessary for SPI bindings */
-        spi-max-frequency = <4000000>;
-
-        /* WS2812 */
-        chain-length = <27>; /* arbitrary; change at will */
-        spi-one-frame = <0x70>;
-        spi-zero-frame = <0x40>;
-
-        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-    };
+   cs-gpios = <&xiao_d 9 GPIO_ACTIVE_LOW>;
 
    st7789: st7789v@0 {
        compatible = "sitronix,st7789v";
@@ -92,17 +77,6 @@ disp_spi: &spi3 {
        nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23  ];
        ram-param = [ 00 F0  ];
        rgb-param = [ CD 08 14  ];
-   };
-};
-
-&i2c0 {
-   status = "okay";
-
-   apds9960: apds9960@39 {
-       compatible = "avago,apds9960";
-       status = "okay";
-       reg = <0x39>;
-       int-gpios = <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
    };
 };
 
