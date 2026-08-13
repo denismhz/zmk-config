@@ -51,6 +51,21 @@ disp_spi: &spi3 {
 	pinctrl-names = "default", "sleep";
    cs-gpios = <&xiao_d 9 GPIO_ACTIVE_LOW>;
 
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+
+        /* SPI */
+        reg = <0>; /* ignored, but necessary for SPI bindings */
+        spi-max-frequency = <4000000>;
+
+        /* WS2812 */
+        chain-length = <27>; /* arbitrary; change at will */
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+
    st7789: st7789v@0 {
        compatible = "sitronix,st7789v";
        spi-max-frequency = <31000000>;
@@ -88,6 +103,21 @@ disp_spi: &spi3 {
        reg = <0x39>;
        int-gpios = <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
    };
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        inversion-on;
+        prechargep = <0x22>;
+    };
 };
 
 &pwm1 {
@@ -95,4 +125,11 @@ disp_spi: &spi3 {
   pinctrl-0 = <&pwm1_default>;
   pinctrl-1 = <&pwm1_sleep>;
   pinctrl-names = "default", "sleep";
+};
+
+/ {
+    chosen {
+        zmk,underglow = &led_strip;
+        zephyr,display = &oled;
+    };
 };
