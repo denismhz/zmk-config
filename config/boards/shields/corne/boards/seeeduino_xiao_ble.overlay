@@ -86,3 +86,16 @@ disp_spi: &spi3 {
   pinctrl-1 = <&pwm1_sleep>;
   pinctrl-names = "default", "sleep";
 };
+
+/ {
+    dummy_rgb: dummy_rgb {
+        compatible = "worldsemi,ws2812-gpio";
+        gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+        chain-length = <1>;
+        status = "okay";
+    };
+
+    chosen {
+        zmk,underglow = &dummy_rgb;
+    };
+};
