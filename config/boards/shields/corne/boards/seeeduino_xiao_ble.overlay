@@ -89,7 +89,7 @@ disp_spi: &spi3 {
 / {
     dummy_rgb: dummy_rgb {
         compatible = "worldsemi,ws2812-gpio";
-        gpios = <&xiao_d 0 GPIO_ACTIVE_HIGH>;
+        in-gpios = <&xiao_d 0 GPIO_ACTIVE_HIGH>;
         chain-length = <1>;
         color-mapping = <LED_COLOR_ID_GREEN
                          LED_COLOR_ID_RED
