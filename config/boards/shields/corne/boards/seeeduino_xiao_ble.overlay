@@ -9,21 +9,7 @@
 };
 
 &spi2 {
-    status = "okay";
-
-    dummy_rgb: ws2812@0 {
-        compatible = "worldsemi,ws2812-spi";
-        reg = <0>;
-        spi-max-frequency = <4000000>;
-
-        chain-length = <1>;
-        spi-one-frame = <0x70>;
-        spi-zero-frame = <0x40>;
-
-        color-mapping = <LED_COLOR_ID_GREEN
-                         LED_COLOR_ID_RED
-                         LED_COLOR_ID_BLUE>;
-    };
+    status = "disabled";
 };
 
 &pinctrl {
@@ -102,6 +88,12 @@ disp_spi: &spi3 {
 };
 
 / {
+    dummy_rgb: dummy_rgb {
+        compatible = "zmk,dummy-led-strip";
+        chain-length = <1>;
+        status = "okay";
+    };
+
     chosen {
         zmk,underglow = &dummy_rgb;
     };
