@@ -20,6 +20,7 @@
 #define LWR 1
 #define RSE 2
 #define ADJ 3
+#define GME 4
 
 &lt { quick_tap_ms = <220>; };
 &mt { quick_tap_ms = <220>; };
@@ -118,6 +119,21 @@
 
                 adjust_layer {
                         display-name = "Adjust";
+// -----------------------------------------------------------------------------------------
+//| BLDR | RGB | RGB | RGB | RGB | RGB |   | RGB | RGB | RGB | RGB | RGB | BLDR |
+//| BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
+//|pwrOFF|NUMLK|     |     |     |     |   |     |     |     |     |     |      |
+//                   |     |     |     |   |     |     |     |
+                        bindings = <
+&bootloader &rgb_ug RGB_TOG &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_SPD &bootloader
+&none &none &none &mkp RCLK &mkp LCLK &mkp MCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &none &none
+&ext_power EP_TOG &kp KP_NUM &none &none &none &none    &uc UC_DE_AE &uc UC_DE_OE &uc UC_DE_UE &uc UC_DE_SS &none &none
+                                                              &trans &none &trans           &trans &none &trans
+                        >;
+                };
+
+                gaming_layer {
+                        display-name = "Gaming";
 // -----------------------------------------------------------------------------------------
 //| BLDR | RGB | RGB | RGB | RGB | RGB |   | RGB | RGB | RGB | RGB | RGB | BLDR |
 //| BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
