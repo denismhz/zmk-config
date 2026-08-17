@@ -65,6 +65,7 @@
                 compatible = "zmk,keymap";
 
                 default_layer {
+                        display-name = "Default";
 // ------------------------------------------------------------------------------------------------
 //| LGUI/] |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | RGUI/[ | 
 //| CTRL/` |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | CTRL/' |
@@ -79,6 +80,7 @@
                 };
 
                 lower_layer {
+                        display-name = "Number";
 // -----------------------------------------------------------------------------------------
 //|LGUI/CAPS |  *  |  7 |  8  |  9  |  +  |    |  !  |  @  |  #  |  $  |  %  | RGUI/F1 |
 //|CTRL/MENU |  /  |  4 |  5  |  6  |  -  |    |  ^  |  &  |  *  |  (  |  )  | CTRL/F2 |
@@ -93,6 +95,7 @@
                 };
 
                 raise_layer {
+                        display-name = "Raise";
 // -----------------------------------------------------------------------------------------
 //| LGUI |  VOLU  |  PGUP  | PLAY | HOME | ___  |            | ___  | HOME | PLAY| PGUP | VOLU | RGUI |
 //| CTRL |  VOLD  |  LEFT  |  UP  | DOWN | RGHT |            | LEFT | DOWN | UP  | RGHT | VOLD | CTRL | 
@@ -114,6 +117,7 @@
                 };
 
                 adjust_layer {
+                        display-name = "Adjust";
 // -----------------------------------------------------------------------------------------
 //| BLDR | RGB | RGB | RGB | RGB | RGB |   | RGB | RGB | RGB | RGB | RGB | BLDR |
 //| BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
