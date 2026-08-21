@@ -1,6 +1,6 @@
 manifest:
   defaults:
-    revision: v0.3
+    revision: main
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
@@ -8,21 +8,21 @@ manifest:
       url-base: https://github.com/mctechnology17
     - name: urob
       url-base: https://github.com/urob
-    - name: janpfischer
-      url-base: https://github.com/janpfischer
+    - name: carrefinho                            
+      url-base: https://github.com/carrefinho     
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3
+      revision: main
       import: app/west.yml
     - name: zmk-nice-oled
       remote: mctechnology17
       revision: main
     - name: zmk-unicode
       remote: urob
-      revision: v0.3
-    - name: zmk-dongle-screen
-      remote: janpfischer
       revision: main
+    - name: prospector-zmk-module
+      remote: carrefinho
+      revision: feat/new-status-screens
   self:
     path: config
