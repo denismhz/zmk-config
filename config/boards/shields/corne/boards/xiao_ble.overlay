@@ -22,7 +22,7 @@
             compatible = "sitronix,st7789v";
             status = "okay";
             reg = <0>;
-            mipi-mode = <MIPI_DBI_MODE_SPI_4WIRE>;
+            mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
             mipi-max-frequency = <31000000>;
             width = <240>;
             height = <280>;
