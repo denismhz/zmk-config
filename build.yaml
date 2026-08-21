@@ -20,11 +20,11 @@
 ---
 include:
   - board: nice_nano
-    shield: enki42_left nice_oled
+    shield: enki42_left
   - board: nice_nano
-    shield: enki42_right nice_oled
+    shield: enki42_right
   - board: nice_nano
-    shield: enki42_dongle_pro_micro nice_oled
+    shield: enki42_dongle_pro_micro
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: nice_nano

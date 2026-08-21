@@ -4,8 +4,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: mctechnology17
-      url-base: https://github.com/mctechnology17
     - name: urob
       url-base: https://github.com/urob
     - name: carrefinho                            
@@ -15,9 +13,6 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-nice-oled
-      remote: mctechnology17
-      revision: main
     - name: zmk-unicode
       remote: urob
       revision: main
