@@ -33,6 +33,6 @@ include:
     shield: settings_reset 
   - board: xiao_ble
     shield: enki42_dongle_xiao
-    snippet: studio-rpc-usb-uart
+    snippet: studio-rpc-usb-uart zmk-usb-logging
     cmake-args: >-
       -DCONFIG_ZMK_STUDIO=y
