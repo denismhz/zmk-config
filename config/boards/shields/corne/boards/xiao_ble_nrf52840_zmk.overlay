@@ -47,10 +47,9 @@
     };
 
     dummy_led_strip: dummy_led_strip {
-            compatible = "custom,dummy-led-strip";
-            chain-length = <10>;
-            status = "okay";
-        };
+        compatible = "zmk,mock-led-strip";
+        chain-length = <1>;
+    };
 
     chosen {
         zephyr,display = &st7789;
