@@ -48,13 +48,9 @@
     };
 
     dummy_led_strip: dummy_led_strip {
-        compatible = "worldsemi,ws2812-gpio";
-        /* Verwende einen beliebigen ungenutzten Pin, z.B. D2 (0, 2) */
-        in-gpios = <&xiao_d 2 GPIO_ACTIVE_HIGH>;
+        compatible = "zmk,mock-led-strip";
         chain-length = <1>;
-        color-mapping = <LED_COLOR_ID_GREEN
-                         LED_COLOR_ID_RED
-                         LED_COLOR_ID_BLUE>;
+        status = "okay";
     };
 
     chosen {
