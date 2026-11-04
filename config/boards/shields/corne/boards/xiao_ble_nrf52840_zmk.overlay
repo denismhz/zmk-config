@@ -47,15 +47,8 @@
         };
     };
 
-    dummy_led_strip: dummy_led_strip {
-        compatible = "zmk,mock-led-strip";
-        chain-length = <1>;
-        status = "okay";
-    };
-
     chosen {
         zephyr,display = &st7789;
-        zmk,underglow = &dummy_led_strip;
     };
 
     ext_power_gen: ext_power_generic_0 {
