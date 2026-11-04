@@ -1,13 +1,12 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
-#include <dt-bindings/zmk/matrix_transform.h>
 
 / {
-    pwmleds {
-        compatible = "pwm-leds";
-        disp_bl: pwm_led_1 {
-            pwms = <&pwm1 0 PWM_MSEC(1) PWM_POLARITY_NORMAL>;
-        };
-    };
+   pwmleds {
+      compatible = "pwm-leds";
+      disp_bl: pwm_led_1 {
+          pwms = <&pwm1 0 PWM_MSEC(1) PWM_POLARITY_NORMAL>;
+      };
+  };
 
     mipi_dbi {
         compatible = "zephyr,mipi-dbi-spi";
@@ -26,7 +25,7 @@
             mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
             mipi-max-frequency = <31000000>;
             width = <240>;
-            height = ;
+            height = <280>;
             x-offset = <0>;
             y-offset = <20>;
             vcom = <0x19>;
@@ -37,22 +36,20 @@
             gamma = <0x01>;
             colmod = <0x05>;
             lcm = <0x2c>;
-            porch-param = [ 0c 0c 00 33 33 ];
-            cmd2en-param = [ 5a 69 02 01 ];
-            pwctrl1-param = [ a4 a1 ];
-            pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23 ];
-            nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23 ];
-            ram-param = [ 00 F0 ];
-            rgb-param = [ CD 08 14 ];
+            porch-param = [ 0c 0c 00 33 33  ];
+            cmd2en-param = [ 5a 69 02 01  ];
+            pwctrl1-param = [ a4 a1  ];
+            pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23  ];
+            nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23  ];
+            ram-param = [ 00 F0  ];
+            rgb-param = [ CD 08 14  ];
         };
     };
 
-    /* Dummy WS2812 LED Strip via GPIO-Bitbang */
-    dummy_led_strip: ws2812_dummy {
-        compatible = "worldsemi,ws2812-gpio";
-        in-gpios = <&xiao_d 2 GPIO_ACTIVE_HIGH>; /* Verwendet einen ungenutzten Pin (z.B. D2) */
-        chain-length = <10>;                     /* Kannst du an die LED-Anzahl deiner Peripherals anpassen */
-        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    dummy_led_strip: dummy_led_strip {
+        compatible = "zmk,mock-led-strip";
+        chain-length = <1>;
+        status = "okay";
     };
 
     chosen {
@@ -68,53 +65,53 @@
 };
 
 &spi2 {
-    status = "disabled";
+        status = "disabled";
 };
 
 &pinctrl {
-    spi3_default: spi3_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
-                    <NRF_PSEL(SPIM_MOSI, 1, 15)>,
-                    <NRF_PSEL(SPIM_MISO, 1, 10)>;
-        };
-    };
+   spi3_default: spi3_default {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
+				<NRF_PSEL(SPIM_MOSI, 1, 15)>,
+				<NRF_PSEL(SPIM_MISO, 1, 10)>;
+		};
+	};
 
-    spi3_sleep: spi3_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
-                    <NRF_PSEL(SPIM_MOSI, 1, 15)>,
-                    <NRF_PSEL(SPIM_MISO, 1, 10)>;
-            low-power-enable;
-        };
-    };
+	spi3_sleep: spi3_sleep {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
+				<NRF_PSEL(SPIM_MOSI, 1, 15)>,
+				<NRF_PSEL(SPIM_MISO, 1, 10)>;
+			low-power-enable;
+		};
+	};
 
-    pwm1_default: pwm1_default {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 11)>;
-            nordic,invert;
-        };
-    };
+   pwm1_default: pwm1_default {
+      group1 {
+         psels = <NRF_PSEL(PWM_OUT0, 1, 11)>;
+         nordic,invert;
+      };
+   };
 
-    pwm1_sleep: pwm1_sleep {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 11)>;
-            low-power-enable;
-        };
-    };
+   pwm1_sleep: pwm1_sleep {
+      group1 {
+         psels = <NRF_PSEL(PWM_OUT0, 1, 11)>;
+         low-power-enable;
+      };
+   };
 };
 
 disp_spi: &spi3 {
-    status = "okay";
-    pinctrl-0 = <&spi3_default>;
-    pinctrl-1 = <&spi3_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&xiao_d 9 GPIO_ACTIVE_LOW>;
+   status = "okay";
+   pinctrl-0 = <&spi3_default>;
+	pinctrl-1 = <&spi3_sleep>;
+	pinctrl-names = "default", "sleep";
+   cs-gpios = <&xiao_d 9 GPIO_ACTIVE_LOW>;
 };
 
 &pwm1 {
-    status = "okay";
-    pinctrl-0 = <&pwm1_default>;
-    pinctrl-1 = <&pwm1_sleep>;
-    pinctrl-names = "default", "sleep";
+  status = "okay";
+  pinctrl-0 = <&pwm1_default>;
+  pinctrl-1 = <&pwm1_sleep>;
+  pinctrl-names = "default", "sleep";
 };
