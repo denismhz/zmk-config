@@ -15,6 +15,17 @@
     };
 };
 
+/*
+ * Zephyr 4.1 leaves the nRF TWI pins without an internal pull-up. Without one,
+ * SDA/SCL can idle low and every SSD1306 transfer hangs, so the display never
+ * initializes. Enable the internal pull-ups to keep the bus alive.
+ */
+&i2c0_default {
+    group1 {
+        bias-pull-up;
+    };
+};
+
 // replace the following lines for the 128x64 screen by default
 &pro_micro_i2c {
     status = "okay";
